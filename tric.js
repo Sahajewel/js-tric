@@ -126,3 +126,25 @@ console.log(numRest);
 
 const ArrFrom = Array.from({ length: 500 }, (_, index) => index + 1);
 console.log(ArrFrom);
+
+// tric:15: অবজেক্টে কন্ডিশনাল প্রপার্টি যোগ করা (Conditional Object Property)
+// কোনো শর্তের ওপর ভিত্তি করে অবজেক্টের ভেতরে একটা কী (Key) যোগ করতে চাইলে if-else না লিখে সরাসরি স্প্রেড অপারেটর (...) আর && ব্যবহার করা যায়:
+
+const isAdmin = true;
+const testUser = { name: "Saha", age: 36, ...(isAdmin && { role: "Admin" }) };
+console.log(testUser);
+
+// tric:16. অ্যারেকে দ্রুত র‍্যান্ডমাইজ বা উল্টাপাল্টা করা (Shuffle Array)
+// কোনো লটারি, কুইজ বা কার্ড গেমের জন্য অ্যারের উপাদানগুলোকে চট করে এলোমেলো করতে sort() আর Math.random() ব্যবহার করা যায়:
+
+const randomArray = [5, 3, 6, 8, 9, 7];
+const shuffled = randomArray.sort(() => Math.random() - 0.5); //
+console.log(shuffled);
+console.log(Math.random());
+
+// tric:17. স্ট্রিং রিভার্স (Reverse) করা ১ লাইনে
+// ইন্টারভিউতে খুব জনপ্রিয় একটি প্রশ্ন—"একটি শব্দকে উল্টে (Reverse) দাও"। এটি ৩টি মেথড পরপর চেইন করে এক লাইনে করা যায়:
+
+const stri = "React";
+const reversed = stri.split("").reverse().join("");
+console.log(reversed);
