@@ -1,0 +1,128 @@
+// tric-1 javascript + oparator sudu string concanate kore, kintu substruct, multiple, divide cocanate korte pare na, se oi string ke implcitely number e convert kore. It is called type coeccion.
+
+const x = 5;
+const y = "5";
+
+console.log(x + y); // The answer is "55"
+console.log(x - y); // The answer is 0, because y="5" converted to number 5, and 5-5=0
+
+// tric-2
+// we converter string to number by using + operator
+
+const str = "5";
+const num = 5;
+console.log(+str + num); // The answer is 10, because + operator converter string to number
+console.log(Number(str) + num); // same result 10
+console.log(parseInt(str) + num); // same result 10
+
+// tric-3, - operator die value ulte deya
+
+const minus = -1;
+console.log(-minus); // The answer is 1, because minase minase olus
+
+// tric-4. শর্টকার্ট কন্ডিশন (Short-circuit Evaluation)
+// if-else না লিখে খুব সহজে কন্ডিশনাল কোড চালানোর জন্য && এবং || ব্যবহার করা যায়:
+
+const isLogged = true;
+isLogged && console.log("Welcome"); // answer is welcome
+// || (ডিফল্ট ভ্যালু সেট করতে):
+
+const name = "";
+const user = name || "Guest";
+console.log(user); // answer is guest.
+
+// tric-5  অ্যারে থেকে ডুপ্লিকেট মান এক লাইনে রিমুভ করা (Set)
+
+const number = [10, 20, 40, 20, 40, 60, 80, 90, 10];
+
+const revobeDup = [...new Set(number)];
+console.log(revobeDup); // answer is [ 10, 20, 40, 60, 80, 90 ]
+
+// tric-6.  বুলিয়ানে কনভার্ট করা (!! ডাবল নট অপারেটর)
+// কোনো ভ্যালু Truthy নাকি Falsy, তা চট করে বুলিয়ানে (true/false) রূপান্তর করতে এটি দারুণ কাজ করে:
+
+console.log(!!"Hello");
+console.log(!!2);
+console.log(!!0);
+console.log(!!"");
+console.log(!!null);
+console.log(!!undefined);
+console.log(!!NaN);
+
+// tric 7. ৫. অবজেক্ট থেকে ডেটা রিনেম করে নেওয়া (Destructuring Rename)
+// অবজেক্ট থেকে ডেটা বের করার সময় সরাসরি নাম পরিবর্তন করে নেওয়া যায়:
+
+const user1 = { name: "Saha", age: 35 };
+const { name: userName } = user1;
+console.log(userName); // answer is userName = "saha"
+
+// tric-8. ৬. অ্যারের একদম শেষের আইটেম নেওয়া (at(-1))
+// আগে অ্যারের শেষের উপাদান বের করতে arr[arr.length - 1] লিখতে হতো। এখন নতুন at() দিয়ে খুব সহজে পেছনের আইটেম নেওয়া যায়:
+
+const fruits = ["Orange", "Apple", "Mango"];
+const useAt = "JEWEL";
+console.log(fruits[fruits.length - 1]);
+console.log(fruits.at(-1));
+console.log(useAt.at(-1)); // answer is L
+console.log(useAt.at(0)); // answer is J
+console.log(useAt[0]);
+console.log(useAt.charAt(useAt.length - 1));
+console.log(useAt[useAt.length - 1]);
+
+// tric-9. ১. Optional Chaining (?.) — অ্যাপ ক্র্যাশ হওয়া থেকে বাঁচানো
+// অবজেক্টের ভেতরের কোনো প্রপার্টি যদি না থাকে, তবে সাধারণ নিয়মে Cannot read properties of undefined এরর দিয়ে পুরো অ্যাপ ক্র্যাশ করে। ?. ব্যবহার করলে এরর না দিয়ে সরাসরি undefined রিটার্ন করে।
+
+const country = { name: "Bangladesh" };
+// সাধারণ নিয়ম (এরর দেবে এবং অ্যাপ ক্র্যাশ করবে):
+// console.log(user.address.city);
+// console.log(country.address.city);
+//  Optional Chaining (নিরাপদ)
+console.log(country.address?.city);
+
+// tric-10. ২. Nullish Coalescing Operator (??) — || এর চেয়ে নিখুঁত
+// আমরা অনেকেই ডিফল্ট মান দেওয়ার জন্য || ব্যবহার করি। কিন্তু || মান 0 বা "" (খালি স্ট্রিং) হলেও সেটিকে মিথ্যা ধরে ভুল মান বসিয়ে দেয়। ?? শুধু null অথবা undefined হলেই কেবল ডানপাশের ডিফল্ট মান নেয়।
+const score = 0;
+const score1 = undefined;
+
+console.log(score || 10); // 10 (কারণ 0 কে Falsy মনে করেছে, কিন্তু 0 তো একটা বৈধ স্কোর!)
+console.log(score ?? 10); /// 0 (নিখুঁত! শুধু null/undefined পেলেই 10 নিত)
+console.log(score1 ?? 10); // answer is 10
+
+// tric-11 অবজেক্ট শর্টহ্যান্ড (Property Shorthand)
+// যখন অবজেক্টের কী (key) এবং ভেরিয়েবলের নাম একই হয়, তখন দুইবার লেখার কোনো দরকার নেই!
+const man = "Jewel";
+const age = 35;
+
+// পুরোনো নিয়ম:
+const human = {
+  man: man,
+  age: age,
+};
+// আধুনিক নিয়ম:
+const human1 = {
+  man,
+  age,
+};
+console.table(human1);
+
+// tric-12. অ্যারে খালি করার দ্রুততম উপায় (length = 0)
+// কোনো অ্যারেকে লুপ চালিয়ে বা নতুন করে খালি অ্যারে ডিক্লেয়ার না করে, তার length শূন্য করে দিলে আগের মেমরি রেফারেন্স ঠিক রেখেই মুহূর্তের মধ্যে অ্যারে খালি হয়ে যায়।
+
+let numbers = [10, 20, 30, 40, 50];
+numbers.length = 0;
+console.log(numbers);
+
+// tric-13. রেস্ট অপারেটর দিয়ে বাদ দিয়ে বাকি মানগুলো নেওয়া (Rest Parameter)
+// অবজেক্ট বা অ্যারে ডিস্ট্রাকচার করার সময় নির্দিষ্ট কিছু মান বাদ দিয়ে বাকি সবগুলোকে একসাথে নতুন জায়গায় সেভ করে নেওয়া যায়।
+
+const students = { id: 1001, name: "jewel", class: 6, city: "Cumilla" };
+const restNumbers = [10, 20, 30, 40, 50];
+const { id, ...rest } = students;
+const [first, ...numRest] = restNumbers;
+console.log(numRest);
+
+// tric-14. Array.from() দিয়ে সহজে রেঞ্জ বা সিকোয়েন্স তৈরি করা
+// ইন্টারভিউতে বা ডায়নামিক তালিকার জন্য যদি ১ থেকে ১০ বা ১ থেকে ১০০ এর একটি সংখ্যার অ্যারে চট করে বানাতে হয়, তবে লুপ না চালিয়ে Array.from() দিয়ে এক লাইনে করা যায়:
+
+const ArrFrom = Array.from({ length: 500 }, (_, index) => index + 1);
+console.log(ArrFrom);
