@@ -148,3 +148,14 @@ console.log(Math.random());
 const stri = "React";
 const reversed = stri.split("").reverse().join("");
 console.log(reversed);
+
+// tric 18: ডায়নামিক অবজেক্ট কী (Dynamic Object Keys)
+// ভেরিয়েবলের ভেতরে থাকা টেক্সটকে সরাসরি অবজেক্টের কী (Key) হিসেবে ব্যবহার করতে থার্ড ব্র্যাকেট [] ব্যবহার করা হয়:
+
+const dynamicName = "name";
+const formData = { age: 24 };
+const dynamicUser = {
+  ...formData,
+  [dynamicName]: "Saha",
+};
+console.log(dynamicUser); // answer is { age: 24, name: 'Saha' }
