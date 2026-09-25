@@ -159,3 +159,27 @@ const dynamicUser = {
   [dynamicName]: "Saha",
 };
 console.log(dynamicUser); // answer is { age: 24, name: 'Saha' }
+
+// tric:19. অ্যারের সব উপাদানকে নম্বর বানানো (Shortest Way)
+// স্ট্রিংয়ের অ্যারে যেমন ["1", "2", "3"]-কে সরাসরি নম্বরের অ্যারে [1, 2, 3] বানাতে map(Number) ব্যবহার করা যায়:
+
+const strArray = ["2", "3", "5"];
+const numberArray = strArray.map(Number);
+console.log(numberArray);
+
+console.log(typeof Number);
+
+// tric:20. ফাংশনের ডিফল্ট প্যারামিটার (Default Parameters)
+// ফাংশনে যদি ইউজার কোনো আর্গুমেন্ট পাস না করে, তবে যেন undefined এসে অ্যাপ না ভাঙে, তার জন্য সমান চিহ্ন (=) দিয়ে আগে থেকেই ডিফল্ট মান বসিয়ে রাখা যায়:
+
+function defaultPara(name = "Guest") {
+  return name;
+}
+console.log(defaultPara("Jewel"));
+
+// tric:21. flat() — নেস্টেড অ্যারে (Nested Array) এক সেকেন্ডে সোজা করা
+// ধরুন একটি অ্যারের ভেতর আরও অ্যারে (Nested Array) আছে। আগে এটাকে সোজা করতে লুপ ঘুরিয়ে পাগল হতে হতো। এখন flat() দিয়ে এক লাইনে সব সমান করে ফেলা যায়:
+
+const nestedLoop = [1, [2, 3], [8, 9, [7, 5]]];
+const flat = nestedLoop.flat(Infinity);
+console.log(flat);
