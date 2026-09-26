@@ -183,3 +183,63 @@ console.log(defaultPara("Jewel"));
 const nestedLoop = [1, [2, 3], [8, 9, [7, 5]]];
 const flat = nestedLoop.flat(Infinity);
 console.log(flat);
+
+console.log(Number.MAX_VALUE * 2);
+
+// get minimun number
+{
+  const numbers = [45, 12, 89, 3, 27];
+  let minNumber = Infinity;
+  for (let num of numbers) {
+    if (num < minNumber) {
+      minNumber = num;
+    }
+  }
+  console.log(minNumber);
+}
+//  get maximum value
+
+{
+  const numbers = [45, 12, 89, 3, 27];
+  let maxValue = -Infinity;
+  for (let num of numbers) {
+    if (num > maxValue) {
+      maxValue = num;
+    }
+  }
+  console.log(maxValue);
+}
+
+// tric:22. Boolean মেথড দিয়ে অ্যারে থেকে ময়লা (Falsy values) সাফ করা
+// অ্যারে থেকে null, undefined, 0, false, বা "" (খালি স্ট্রিং) ঝেড়ে ফেলে শুধু সঠিক ভ্যালুগুলো রাখতে filter(Boolean) দারুণ কাজ করে:
+
+const dirtyArray = [0, "Jewel", "", undefined, "Saha", null, false, 100];
+const filterDirty = dirtyArray.filter((item) => {
+  return Boolean(!item);
+});
+console.log(filterDirty);
+
+// tric:23. Object.freeze() বনাম Object.seal() — অবজেক্ট লক করা
+// প্রজেক্টে কনফিগারেশন বা ইম্পর্টেন্ট অবজেক্ট যেন ভুল করে কেউ বদলে না ফেলে:
+
+// Object.freeze() (পুরো বরফ!): নতুন কোনো প্রপার্টি যোগ, বিয়োগ বা ভেতরের মান পরিবর্তন—কিছুই করা যাবে না।
+
+// Object.seal() (সিলগালা!): নতুন প্রপার্টি যোগ বা বিয়োগ করা যাবে না, তবে আগের প্রপার্টির মান পরিবর্তন করা যাবে।
+
+{
+  const user = {
+    name: "Jewel",
+    age: "36",
+  };
+  const freeze = Object.freeze(user);
+  user.country = "Bd";
+  console.log(user); // { name: 'Jewel', age: '36' }
+
+  const user1 = {
+    name: "Jewel",
+    age: "36",
+  };
+  const seal = Object.seal(user1);
+  user1.name = "saha";
+  console.log(user1); // { name: 'saha', age: '36' }
+}
