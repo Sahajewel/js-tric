@@ -1,5 +1,5 @@
 // ||= and &&= (logical assignment)
-// for (||) if left side is falsy then  work right side. but for (&&) if left side is truthy then work right side.
+// for (||) if left side is falsy then  right side will work. but for (&&) if left side is truthy then  right side will work.
 let a = null;
 a ||= "Default";
 console.log(a); // output Default
