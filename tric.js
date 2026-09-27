@@ -1,4 +1,4 @@
-// tric-1 javascript + oparator sudu string concanate kore, kintu substruct, multiple, divide cocanate korte pare na, se oi string ke implcitely number e convert kore. It is called type coeccion.
+// tric-1 javascript + oparator sudu string concanate kore, kintu substract, multiply, divide concatenate korte pare na, se oi string ke implcitly number e convert kore. It is called type coercion.
 
 const x = 5;
 const y = "5";
@@ -215,7 +215,7 @@ console.log(Number.MAX_VALUE * 2);
 
 const dirtyArray = [0, "Jewel", "", undefined, "Saha", null, false, 100];
 const filterDirty = dirtyArray.filter((item) => {
-  return Boolean(!item);
+  return Boolean(item);
 });
 console.log(filterDirty);
 
@@ -242,4 +242,53 @@ console.log(filterDirty);
   const seal = Object.seal(user1);
   user1.name = "saha";
   console.log(user1); // { name: 'saha', age: '36' }
+}
+
+// tric:24. দুটি ভ্যারিয়েবল অদলবদল (Swap) করা — কোন থার্ড ভ্যারিয়েবল ছাড়া!
+// আগে ভ্যারিয়েবল সোয়াপ করতে temp ভ্যারিয়েবল লাগত। এখন Destructuring ব্যবহার করে এক লাইনে সোয়াপ করা যায়:
+
+{
+  let a = "cost";
+  let b = "expense";
+  [a, b] = [b, a];
+  console.log(a, b);
+}
+
+// tric: 25; Console-এ মাখন মার্কা ম্যাজিক (console.table())
+// অ্যারে অফ অবজেক্ট দেখার জন্য সাধারণ console.log() না দিয়ে console.table() দিলে ব্রাউজার কনসোলে সুন্দর একটি টেবিল আকারে ডেটা দেখায়!
+
+{
+  const user = { name: "saha", age: 36 };
+  console.table(user);
+}
+
+// tric: 26. structuredClone() — অবজেক্ট বা অ্যারের গভীরের কপি (Deep Copy)
+// স্প্রেড অপারেটর (...) দিয়ে কপি করলে অবজেক্টের ভেতরের অবজেক্ট কপি হয় না (Shallow Copy হয়)। কিন্তু structuredClone() দিয়ে ডিপ কপি (Deep Copy) করা যায় যা অরিজিনাল ডাটাকে ১০০% নিরাপদ রাখে!
+
+{
+  const user = {
+    name: "Saha",
+    age: 36,
+    personal: { city: "Dhaka" },
+  };
+
+  const newUser = {
+    ...user,
+    ...{ country: "bd" },
+  };
+  newUser.personal.city = "Cumilla";
+  newUser.age = 40;
+  console.log(user);
+
+  // structuredClone
+  {
+    const user = {
+      name: "Saha",
+      age: 36,
+      personal: { city: "cumilla" },
+    };
+    const newUser = structuredClone(user);
+    newUser.personal.city = "cjittagong";
+    console.log(newUser);
+  }
 }
